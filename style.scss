@@ -1,0 +1,312 @@
+$brand-primary: #3D5AFE;
+$brand-success: #3CC33D;
+
+.timeline {
+  position: relative;
+  box-sizing: border-box;
+  user-select: none;
+  overflow: hidden!important;
+
+  &__arrow {
+    position: absolute;
+    top: 0;
+    width: 80px;
+    height: 40px;
+    z-index: 10;
+    box-shadow: none;
+    border: none;
+    font-size: 0;
+    cursor: pointer;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-top: 4px solid #d8e2ff;
+      border-left: 4px solid #d8e2ff;
+      top: 6px;
+      transition: 0.3s;
+    }
+    &:hover {
+      &:before {
+        border-color: $brand-primary;
+      }
+    }
+    &--prev {
+      left: 0;
+      background: linear-gradient(to right, rgba(255,255,255,1) 80%,rgba(255,255,255,0) 100%);
+      &:before {
+        transform: rotate(-45deg);
+        right: 30px;
+      }
+    }
+    &--next {
+      right: 0;
+      background: linear-gradient(to left, rgba(255,255,255,1) 80%,rgba(255,255,255,0) 100%);
+      &:before {
+        transform: rotate(135deg);
+        left: 30px;
+      }
+    }
+  }
+
+  &__wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden!important;
+    box-sizing: border-box;
+  }
+
+  &__content {
+    width: 2600px;
+    position: relative;
+    padding: 0 50px;
+  }
+
+  &__line {
+
+  }
+
+
+
+  &__year {
+    display: inline-block;
+    position: relative;
+    &:before {
+      content: attr(data-year);
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      color: #97a4ca;
+      bottom: 100%;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      line-height: 10px;
+    }
+
+    &--success {
+      &:before {  color: $brand-success;  }
+      .step__name {
+        &:before {  background: $brand-success;  }
+        &:after {  border-left: 1px dashed $brand-success;  }
+      }
+      .step__datestamp {
+        border: 4px solid $brand-success;
+        &:after {  background-color: $brand-success;  }
+      }
+      .step__arrow {  background: $brand-success;  }
+      .step__description {  border: 2px solid #3cc33d;  }
+      .step__description:before {  background: $brand-success;  }
+    }
+
+    &--primary {
+      &:before {  color: $brand-primary;  }
+      .step__name {
+        &:before {  background: $brand-primary;  }
+        &:after {  border-left: 1px dashed $brand-primary;  }
+      }
+      .step__datestamp {
+        border: 4px solid $brand-primary;
+        &:after {  background-color: $brand-primary;  }
+      }
+      .step__arrow {  background: $brand-primary;  }
+      .step__description {  border: 2px solid $brand-primary;  }
+      .step__description:before {  background: $brand-primary;  }
+    }
+
+    &--last {
+      .step:last-child {
+        .step__arrow:after {
+          width: 300px;
+        }
+      }
+    }
+  }
+}
+
+
+.step {
+  position: relative;
+  width: 185px;
+  display: inline-block;
+  vertical-align: middle;
+  &__name {
+    text-align: center;
+    color: rgba(#383c52, 0.5);
+    font-size: 14px;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #97a4ca;
+      border-radius: 100%;
+      left: calc(50% - 5px);
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      left: calc(50% - 1px);
+      width: 1px;
+      height: 50px;
+      border-left: 1px dashed #97a4ca;
+    }
+  }
+  &__datestamp {
+    color: #383c52;
+    font-size: 14px;
+    font-weight: 700;
+    width: 60px;
+    height: 60px;
+    box-sizing: border-box;
+    border: 4px solid #97a4ca;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 54px;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      height: 4px;
+      width: 140px;
+      top: calc(50% - 2px);
+      left: 100%;
+      background-color: #97a4ca;
+    }
+  }
+  &__arrow {
+    @extend .step__datestamp;
+    width: 26px;
+    height: 26px;
+    background: #97a4ca;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 1px;
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid #fff;
+      border-right: 2px solid #fff;
+      transform: rotate(45deg);
+    }
+  }
+  &__description {
+    width: 300px;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background-color: #ffffff;
+    position: relative;
+    border: 2px solid #97a4ca;
+    transition: 0.3s;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #97a4ca;
+      border-radius: 100%;
+      left: calc(50% - 5px);
+    }
+
+    .icons {
+      text-align: center;
+      margin-bottom: 10px;
+      img {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 10px;
+      }
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+      li {
+        color: #383c52;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24px;
+        position: relative;
+        padding-left: 20px;
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 10px;
+          width: 4px;
+          height: 4px;
+          background-color: #383c52;
+          border-radius: 100%;
+        }
+        a {
+          color: #740fff;
+        }
+      }
+    }
+  }
+  &__point {
+    position: absolute;
+    left: -30px;
+
+    &--top {
+      bottom: 5px;
+      .step__name {
+        padding-top: 58px;
+        &:before {
+          bottom: 20px;
+        }
+        &:after {
+          bottom: 20px;
+        }
+      }
+      .step__description {
+        box-shadow: 0 -2px 6px rgba(44, 47, 64, 0.14);
+        &:hover {
+          box-shadow: -2px -8px 25px rgba(15, 43, 121, 0.25);
+        }
+        &:before {
+          bottom: -7px;
+        }
+      }
+    }
+    &--bottom {
+      top: 5px;
+      .step__name {
+        padding-bottom: 58px;
+        &:before {
+          top: 20px;
+        }
+        &:after {
+          top: 20px;
+        }
+      }
+      .step__description {
+        box-shadow: 0 2px 6px rgba(44, 47, 64, 0.14);
+        &:hover {
+          box-shadow: -2px 8px 25px rgba(15, 43, 121, 0.25);
+        }
+        &:before {
+          top: -6px;
+        }
+      }
+    }
+  }
+  &--short {
+    width: 155px;
+    .step__point {
+      left: -60px;
+      &--bottom {
+        top: -12px;
+      }
+      &--top {
+        bottom: -12px;
+      }
+    }
+  }
+}
